@@ -1,0 +1,5 @@
+#!/usr/bin/env julia
+
+include("../src/Jake.jl")
+
+include("$(pwd())/Jakefile")

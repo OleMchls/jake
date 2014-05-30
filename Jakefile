@@ -1,5 +1,3 @@
-include("src/Jake.jl")
-
 using Jake
 
 desc("My first task")
