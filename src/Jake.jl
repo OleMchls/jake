@@ -1,11 +1,13 @@
 module Jake
 
   export desc,
-         task
+         task,
+         list,
+         execute
 
   include("Task.jl")
 
-  tasks = Task[]
+  tasks = Dict()
   recent_description = String[]
 
   function desc(description)
@@ -14,7 +16,16 @@ module Jake
 
   function task(f::Function, name::Symbol)
     last_description = pop!(recent_description)
-    push!(tasks, Task(name, last_description, f))
+    tasks[name] = Task(name, last_description, f)
+  end
+
+  function list()
+    println(tasks)
+  end
+
+  function execute(task_name::Symbol)
+    task = tasks[task_name]
+    task.task()
   end
 
 end
